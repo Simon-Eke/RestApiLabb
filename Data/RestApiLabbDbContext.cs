@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestApiLabb.Models;
 
 namespace RestApiLabb.Data
 {
@@ -8,5 +9,9 @@ namespace RestApiLabb.Data
         {
             
         }
+
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
     }
 }

@@ -7,10 +7,13 @@ namespace RestApiLabb.Models
     {
         [Key]
         public int EducationId { get; set; }
+        [Required]
         [StringLength(50)]
         public string School { get; set; }
+        [Required]
         [StringLength(50)]
         public string Degree { get; set; }
+        [Required]
         [DataType(DataType.Date)]
         public DateOnly StartDate { get; set; }
         [DataType(DataType.Date)]

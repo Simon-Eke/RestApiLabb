@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using RestApiLabb.Data;
+
 namespace RestApiLabb
 {
     public class Program
@@ -13,6 +16,11 @@ namespace RestApiLabb
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<RestApiLabbDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 

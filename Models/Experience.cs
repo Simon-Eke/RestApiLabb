@@ -7,10 +7,13 @@ namespace RestApiLabb.Models
     {
         [Key]
         public int ExperienceId { get; set; }
+        [Required]
         [StringLength(50)]
         public string Company { get; set; }
+        [Required]
         [StringLength(50)]
         public string JobTitle { get; set; }
+        [Required]
         [StringLength(300)]
         public string Description { get; set; }
         [DataType(DataType.Date)]
