@@ -35,6 +35,8 @@ namespace RestApiLabb
 
             app.UseAuthorization();
 
+            // TODO - EducationEndpoints.RegisterEndpoints(app)
+
             app.Run();
         }
     }
