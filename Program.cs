@@ -40,6 +40,8 @@ namespace RestApiLabb
             ExperienceEndpoints.RegisterEndpoints(app);
             PersonEndpoints.RegisterEndpoints(app);
 
+            GitHubEndpoints.RegisterEndpoints(app);
+
             app.Run();
         }
     }
