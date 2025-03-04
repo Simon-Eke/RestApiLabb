@@ -59,8 +59,8 @@ namespace RestApiLabb.Data
                     JobTitle = "Website developer",
                     Company = "Simon Eke Consulting",
                     Description = "Worked on developing a website for a café",
-                    StartYear = new DateOnly(2025, 1, 23),
-                    EndYear = null
+                    StartDate = new DateOnly(2025, 1, 23),
+                    EndDate = null
                 },
                 new Experience
                 {
@@ -69,8 +69,8 @@ namespace RestApiLabb.Data
                     JobTitle = "Learner",
                     Company = "Life, the Universe and Everything",
                     Description = "Self-development. Rode the roller-coaster of Life",
-                    StartYear = new DateOnly(1998, 4, 29),
-                    EndYear = null
+                    StartDate = new DateOnly(1998, 4, 29),
+                    EndDate = null
                 },
                 new Experience
                 {
@@ -79,8 +79,8 @@ namespace RestApiLabb.Data
                     JobTitle = "Backend-developer",
                     Company = "Big Tech",
                     Description = "Manifesting that I'll be doing databases, APIs",
-                    StartYear = new DateOnly(2024, 12, 31),
-                    EndYear = new DateOnly(2025, 1, 1)
+                    StartDate = new DateOnly(2024, 12, 31),
+                    EndDate = new DateOnly(2025, 1, 1)
                 }
             );
         }

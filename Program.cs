@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using RestApiLabb.Data;
+using RestApiLabb.Endpoints;
 
 namespace RestApiLabb
 {
@@ -35,7 +36,9 @@ namespace RestApiLabb
 
             app.UseAuthorization();
 
-            // TODO - EducationEndpoints.RegisterEndpoints(app)
+            EducationEndpoints.RegisterEndpoints(app);
+            ExperienceEndpoints.RegisterEndpoints(app);
+            PersonEndpoints.RegisterEndpoints(app);
 
             app.Run();
         }

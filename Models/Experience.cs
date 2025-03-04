@@ -17,9 +17,9 @@ namespace RestApiLabb.Models
         [StringLength(300)]
         public string Description { get; set; }
         [DataType(DataType.Date)]
-        public DateOnly StartYear { get; set; }
+        public DateOnly StartDate { get; set; }
         [DataType(DataType.Date)]
-        public DateOnly? EndYear { get; set; }
+        public DateOnly? EndDate { get; set; }
         [ForeignKey("Person")]
         public int PersonId_FK { get; set; }
         public virtual Person Person { get; set; }
