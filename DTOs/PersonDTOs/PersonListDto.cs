@@ -4,7 +4,7 @@ using RestApiLabb.Models;
 
 namespace RestApiLabb.DTOs.PersonDTOs
 {
-    public class PersonsDto
+    public class PersonListDto
     {
         public string Name { get; set; }
         public string EmailAddress { get; set; }

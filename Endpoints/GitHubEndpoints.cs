@@ -10,7 +10,7 @@ namespace RestApiLabb.Endpoints
 
         public static void RegisterEndpoints(WebApplication app)
         {
-            app.MapGet("/person/github/{username}", async (string username) =>
+            app.MapGet("/github/{username}", async (string username) =>
             {
                 if (string.IsNullOrEmpty(username))
                     return Results.BadRequest(new { message = "GitHub username is required" });
@@ -23,7 +23,10 @@ namespace RestApiLabb.Endpoints
 
                     var response = await httpClient.SendAsync(requestMessage);
 
-                    response.EnsureSuccessStatusCode();
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return Results.Json(new { message = $"GitHub API returned {response.StatusCode}" }, statusCode: (int)response.StatusCode);
+                    }
 
                     var responseContent = await response.Content.ReadAsStringAsync();
 
@@ -56,7 +59,7 @@ namespace RestApiLabb.Endpoints
                 {
                     return Results.Json(new { message = "Error fetching data from GitHub. Please try again later." }, statusCode: 500);
                 }
-            });
+            }).WithName("GetGitHubUser");
         }
     }
 }
