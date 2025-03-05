@@ -148,6 +148,11 @@ namespace RestApiLabb.Endpoints
             // POST/add a new Person
             app.MapPost("/person", async (PersonCreateDto newPerson, RestApiLabbDbContext context) =>
             {
+                if (newPerson == null)
+                {
+                    return Results.BadRequest(new { message = "Invalid Person data." });
+                }
+
                 try
                 {
                     var validationContext = new ValidationContext(newPerson);
@@ -309,16 +314,23 @@ namespace RestApiLabb.Endpoints
             // DELETE a record
             app.MapDelete("/person/{id}", async (RestApiLabbDbContext context, int id) =>
             {
-                var person = await context.Persons
+                try
+                {
+                    var person = await context.Persons
                     .FirstOrDefaultAsync(p => p.PersonId == id);
 
-                if (person == null)
-                    return Results.NotFound(new { message = "Person not found" });
+                    if (person == null)
+                        return Results.NotFound(new { message = "Person not found" });
 
-                context.Persons.Remove(person);
-                await context.SaveChangesAsync();
+                    context.Persons.Remove(person);
+                    await context.SaveChangesAsync();
 
-                return Results.NoContent();
+                    return Results.NoContent();
+                }
+                catch (Exception)
+                {
+                    return Results.Json(new { message = "Something went unexpectedly wrong, please try again later." }, statusCode: 500);
+                }
             });
         }
     }
