@@ -30,6 +30,20 @@ namespace RestApiLabb.Data
                 }
             );
 
+            for (int i = 2; i < 100; i++)
+            {
+                modelBuilder.Entity<Person>().HasData(
+                    new Person
+                    {
+                        PersonId = i,
+                        FullName = $"FName LName{i}",
+                        Description = $"Random Description {i}",
+                        Email = $"FName.LName{i}@mail.com",
+                        MobileNumber = $"+46706666{i}"
+                    }
+                );
+            }
+
             modelBuilder.Entity<Education>().HasData(
                 new Education
                 {
@@ -50,6 +64,21 @@ namespace RestApiLabb.Data
                     EndDate = new DateOnly(2023, 6, 9)
                 }
             );
+
+            for (int i = 3; i < 300; i++)
+            {
+                modelBuilder.Entity<Education>().HasData(
+                    new Education
+                    {
+                        EducationId = i,
+                        PersonId_FK = (i % 99) + 1,
+                        School = $"School {i}",
+                        Degree = $"School Degree {i}",
+                        StartDate = new DateOnly(2020, 7, 12),
+                        EndDate = new DateOnly(2021, 11, 4)
+                    }
+                );
+            }
 
             modelBuilder.Entity<Experience>().HasData(
                 new Experience
@@ -83,6 +112,22 @@ namespace RestApiLabb.Data
                     EndDate = new DateOnly(2025, 1, 1)
                 }
             );
+
+            for (int i = 4; i < 400; i++)
+            {
+                modelBuilder.Entity<Experience>().HasData(
+                    new Experience
+                    {
+                        ExperienceId = i,
+                        PersonId_FK = (i % 99) + 1,
+                        JobTitle = $"Job Title {i}",
+                        Company = $"Company {i}",
+                        Description = $"Random Description {i}",
+                        StartDate = new DateOnly(2016, 2, 3),
+                        EndDate = new DateOnly(2019, 9, 11)
+                    }
+                );
+            }
         }
     }
 }
